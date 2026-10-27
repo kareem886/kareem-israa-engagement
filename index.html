@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kareem &amp; Israa · Engagement</title>
+<meta name="description" content="Kareem & Israa are getting engaged. Saturday 12 December 2026, 6 PM at El Patio Zahraa.">
+<meta property="og:title" content="Kareem & Israa are getting engaged ✦">
+<meta property="og:description" content="Saturday 12 December 2026 · 6 PM · El Patio Zahraa. Tap to open your invitation.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0f24">
+<style>
+html{color-scheme:dark}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<title>Kareem &amp; Israa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Aref+Ruqaa:wght@400;700&family=Jost:wght@300;400;500&family=Parisienne&display=swap">
+<style>
+/* Layout: a single night sky over Cairo. Stars live on a fixed canvas; the invitation reads top to bottom like a star chart. */
+:root{
+  --night:#0b0f24;
+  --night-2:#141a3a;
+  --ink:#eef0ff;
+  --muted:#a7acd0;
+  --gold:#e8c987;
+  --rose:#f6dfa4; /* bright champagne gold (was pink) */
+  --line:rgba(232,201,135,.28);
+  --f-display:"Italiana","Didot","Bodoni 72",Georgia,serif;
+  --f-script:"Parisienne","Snell Roundhand",cursive;
+  --f-ar:"Aref Ruqaa","Amiri","Noto Naskh Arabic",serif;
+  --f-body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--night);color:var(--ink)}
+body{
+  font-family:var(--f-body);font-weight:300;font-size:16px;line-height:1.6;
+  background:radial-gradient(120% 80% at 50% 0%, var(--night-2) 0%, var(--night) 60%) fixed;
+  min-height:100%;overflow-x:hidden;
+}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{
+  position:relative;z-index:1;
+  max-width:760px;margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:clamp(40px,8vh,88px) 64px;
+  display:flex;flex-direction:column;gap:clamp(56px,10vh,96px);
+}
+
+/* Hero */
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.eyebrow{
+  font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+}
+.constellation{width:min(420px,100%);height:auto;overflow:visible}
+.constellation .path{
+  fill:none;stroke:var(--gold);stroke-width:1.2;stroke-linecap:round;
+  stroke-dasharray:640;stroke-dashoffset:640;
+  animation:draw 3.2s .6s cubic-bezier(.6,.05,.3,1) forwards;
+}
+.constellation .faint{fill:none;stroke:var(--line);stroke-width:.8;stroke-dasharray:2 5}
+.constellation .star{fill:var(--ink)}
+.constellation .big{fill:#fff;filter:url(#glow);animation:pulse 3.4s ease-in-out infinite}
+.constellation .big.e{animation-delay:1.7s}
+.constellation text{font-family:var(--f-display);fill:var(--gold);font-size:15px;letter-spacing:.2em}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pulse{0%,100%{opacity:1;r:5}50%{opacity:.7;r:6.5}}
+
+.names{
+  font-family:var(--f-display);font-weight:400;
+  font-size:clamp(3.2rem,13vw,6.6rem);line-height:.95;letter-spacing:.02em;
+  margin:6px 0 0;text-wrap:balance;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:.25em;
+}
+.names .amp{
+  font-family:var(--f-script);color:var(--rose);font-size:.62em;
+  transform:translateY(-.08em);
+}
+.names span{display:inline-block;opacity:0;transform:translateY(14px);animation:rise 1.4s cubic-bezier(.2,.7,.2,1) forwards}
+.names span:nth-child(1){animation-delay:.3s}
+.names span:nth-child(2){animation-delay:1.1s}
+.names span:nth-child(3){animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+.arabic{
+  font-family:var(--f-ar);font-size:clamp(1.8rem,6vw,2.6rem);color:var(--gold);
+  line-height:1.4;margin:0;
+}
+.lede{
+  font-size:clamp(1.05rem,3.2vw,1.25rem);color:var(--ink);max-width:30ch;margin:6px auto 0;
+  text-wrap:balance;
+}
+.lede em{font-family:var(--f-script);font-style:normal;color:var(--rose);font-size:1.35em}
+
+.wish{
+  margin-top:18px;
+  font:500 .78rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--night);background:var(--gold);border:0;border-radius:999px;
+  padding:15px 26px;cursor:pointer;
+  box-shadow:0 0 0 0 rgba(232,201,135,.5);
+  transition:transform .2s ease, box-shadow .4s ease;
+}
+.wish:hover{transform:translateY(-2px);box-shadow:0 0 34px 4px rgba(232,201,135,.35)}
+.wish:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+.hint{font-size:.8rem;color:var(--muted);margin:0}
+
+/* Star chart card */
+.chart{
+  position:relative;
+  border:1px solid var(--line);border-radius:4px;
+  background:linear-gradient(180deg, rgba(20,26,58,.72), rgba(11,15,36,.72));
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:clamp(24px,5vw,44px);
+  display:flex;flex-direction:column;gap:28px;
+}
+.chart::before,.chart::after{
+  content:"";position:absolute;width:14px;height:14px;border:1px solid var(--gold);
+}
+.chart::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.chart::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chart h2{font-family:var(--f-display);font-weight:400;font-size:clamp(1.8rem,6vw,2.4rem);margin:0;letter-spacing:.02em}
+.coords{font-size:.72rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;font-variant-numeric:tabular-nums}
+
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.fact{display:flex;flex-direction:column;gap:6px;min-width:0;border-top:1px solid var(--line);padding-top:14px}
+.fact .k{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.fact .v{font-family:var(--f-display);font-size:1.45rem;line-height:1.25}
+.fact .sub{font-size:.88rem;color:var(--muted)}
+.tbc{color:var(--muted);font-style:italic}
+
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;text-align:center}
+.countdown div{display:flex;flex-direction:column;gap:2px}
+.countdown b{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,8vw,3rem);font-variant-numeric:tabular-nums;line-height:1}
+.countdown small{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+
+.moon{display:flex;align-items:center;gap:18px;border-top:1px solid var(--line);padding-top:22px}
+.moon canvas{flex:none;width:64px;height:64px}
+.moon p{margin:0;font-size:.95rem;color:var(--muted);max-width:44ch}
+.moon p strong{color:var(--ink);font-weight:400}
+
+/* Closing */
+.closing{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
+.closing .ar{font-family:var(--f-ar);font-size:clamp(1.4rem,5vw,1.9rem);color:var(--gold);margin:0;line-height:1.6}
+.closing p{margin:0;max-width:40ch;color:var(--muted)}
+.sign{font-family:var(--f-script);font-size:2rem;color:var(--rose)}
+.maplink{font-size:.82rem;letter-spacing:.06em;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);align-self:flex-start;margin-top:4px}
+.maplink:hover{border-bottom-color:var(--gold)}
+.maplink:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.lb-sub{margin:-12px 0 0;color:var(--muted);max-width:44ch}
+.lb-form{display:flex;flex-direction:column;gap:8px}
+.lb-label{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.lb-input{
+  width:100%;font:300 1rem/1.5 var(--f-body);color:var(--ink);
+  background:rgba(11,15,36,.6);border:1px solid var(--line);border-radius:4px;padding:12px 14px;resize:vertical;
+}
+.lb-input::placeholder{color:rgba(167,172,208,.55)}
+.lb-input:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-color:var(--gold)}
+.lb-send{display:inline-block;text-align:center;text-decoration:none;margin-top:14px;align-self:flex-start}
+.lb-send[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.lb-note{margin:0;font-size:.8rem;color:var(--muted)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+button.lb-send{border:0;font:500 .78rem/1 var(--f-body)}
+button.lb-send:disabled{opacity:.5;cursor:default}
+.wall{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:0}
+.wall li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:18px 0;border-top:1px solid var(--line);animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.wall .st{grid-row:span 3;color:var(--gold);font-size:1.1rem;line-height:1.6}
+.wall .who{font-family:var(--f-display);font-size:1.3rem;line-height:1.2}
+.wall .msg{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+.wall .ago{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.wall-empty{margin:0;color:var(--muted);font-style:italic}
+.rsvp{
+  display:inline-block;margin-top:6px;text-decoration:none;
+  font:500 .78rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:14px 24px;
+}
+.rsvp:hover{background:rgba(232,201,135,.1)}
+.rsvp:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+
+/* ---------- Intro: envelope + story steps ---------- */
+:root{
+  --env:#1f2758; --env-2:#2a336e; --env-3:#182048;
+  --paper:#f5eedf; --paper-ink:#2a2440;
+  --wax-hi:#f8e4ad; --wax:#c99a45; --wax-lo:#7d5619;
+}
+body.intro{overflow:hidden}
+main{transition:opacity 1.2s ease .3s}
+body.intro main{opacity:0;visibility:hidden}
+body.intro .names span,
+body.intro .constellation .path,
+body.intro .constellation .big{animation-play-state:paused}
+#intro{
+  position:fixed;inset:0;z-index:5;
+  display:grid;place-items:center;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:calc(24px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-bottom, 0px));
+  background:radial-gradient(90% 70% at 50% 45%, rgba(20,26,58,.55), rgba(11,15,36,.92));
+  transition:opacity .9s ease, filter .9s ease;
+}
+#intro.leave{opacity:0;filter:blur(6px);pointer-events:none}
+.skip{
+  position:absolute;top:calc(14px + env(safe-area-inset-top, 0px));right:max(16px, env(safe-area-inset-right, 0px));
+  background:none;border:0;color:var(--muted);font:400 .74rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;
+  padding:10px;cursor:pointer;
+}
+.skip:hover{color:var(--ink)}
+.skip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.env-wrap{display:flex;flex-direction:column;align-items:center;gap:26px;transition:opacity .6s ease, transform .6s ease}
+.env-wrap.gone{opacity:0;transform:scale(.92) translateY(20px);pointer-events:none}
+.env-to{font-family:var(--f-display);font-size:clamp(1.4rem,5vw,1.8rem);margin:0;text-align:center}
+.env-to small{display:block;font-family:var(--f-body);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.envelope{
+  position:relative;width:min(340px,84vw);aspect-ratio:3/2;max-width:100%;
+  perspective:1000px;cursor:pointer;border:0;padding:0;background:none;
+  animation:hover 3.6s ease-in-out infinite;
+}
+.envelope:focus-visible{outline:2px solid var(--gold);outline-offset:10px;border-radius:8px}
+@keyframes hover{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+.env-back,.env-front,.env-flap,.env-letter{position:absolute}
+.env-back{inset:0;background:var(--env-3);border-radius:8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7), 0 0 60px rgba(232,201,135,.08);z-index:1}
+.env-letter{
+  left:7%;right:7%;top:6%;bottom:10%;z-index:2;
+  background:var(--paper);color:var(--paper-ink);border-radius:4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:14%;gap:4px;
+  transition:transform 1s cubic-bezier(.3,.7,.2,1) .55s;
+}
+.env-letter b{font-family:var(--f-display);font-weight:400;font-size:clamp(1.2rem,4.6vw,1.6rem)}
+.env-letter span{font-family:var(--f-script);font-size:1.3rem;color:var(--wax)}
+.env-front{
+  inset:0;z-index:3;border-radius:8px;
+  background:linear-gradient(160deg,var(--env-2),var(--env));
+  clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);
+}
+.env-front::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top right, transparent 49.6%, var(--line) 50%, transparent 50.4%),
+             linear-gradient(to top left, transparent 49.6%, var(--line) 50%, transparent 50.4%);
+  background-size:50% 100%;background-position:left bottom,right bottom;background-repeat:no-repeat;
+}
+.env-flap{
+  left:0;right:0;top:0;height:58%;z-index:4;
+  background:linear-gradient(180deg,var(--env-2),#323c7e);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;transition:transform .7s cubic-bezier(.5,0,.3,1), z-index 0s .35s;
+}
+.seal{
+  position:absolute;left:50%;top:58%;z-index:5;
+  width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--wax-hi), var(--wax) 55%, var(--wax-lo));
+  box-shadow:0 6px 14px rgba(0,0,0,.45), inset 0 -3px 6px rgba(0,0,0,.25);
+  display:grid;place-items:center;color:#4a3210;
+  font-family:var(--f-display);font-size:1.25rem;letter-spacing:.04em;
+  transition:transform .5s ease, opacity .5s ease;
+}
+.seal::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dashed rgba(74,50,16,.45)}
+.envelope.open{animation:none}
+.envelope.open .seal{transform:scale(1.5) rotate(20deg);opacity:0}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .env-letter{transform:translateY(-58%)}
+.tap{font-size:.8rem;color:var(--muted);letter-spacing:.06em;margin:0;animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.4}}
+
+.stage{
+  position:relative;width:min(440px,100%);
+  display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;
+}
+.dots{display:flex;gap:8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .4s, transform .4s}
+.dots i.on{background:var(--gold);transform:scale(1.25)}
+.step{display:flex;flex-direction:column;align-items:center;gap:18px;animation:stepIn .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes stepIn{from{opacity:0;transform:translateY(18px)}}
+.step h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.7rem,6.5vw,2.4rem);line-height:1.15;margin:0;text-wrap:balance}
+.step p{margin:0;color:var(--muted);max-width:32ch}
+.next{
+  font:500 .78rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--night);background:var(--gold);border:0;border-radius:999px;padding:15px 26px;cursor:pointer;
+  transition:transform .2s ease, box-shadow .4s ease;
+}
+.next:hover{transform:translateY(-2px);box-shadow:0 0 30px 2px rgba(232,201,135,.35)}
+.next:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+.next.ghost{background:none;color:var(--gold);border:1px solid var(--gold)}
+
+.duo{position:relative;width:min(280px,100%);height:110px}
+.duo .s{position:absolute;top:44px;width:12px;height:12px;border-radius:50%;background:#fff;
+  box-shadow:0 0 14px 4px rgba(232,201,135,.7), 0 0 40px 10px rgba(246,223,164,.25);
+  transition:left 1.8s cubic-bezier(.6,0,.2,1), right 1.8s cubic-bezier(.6,0,.2,1);
+  animation:twin 2.4s ease-in-out infinite}
+.duo .s.b{animation-delay:1.2s}
+.duo .s.a{left:8%}.duo .s.b{right:8%}
+.duo .lbl{position:absolute;top:70px;font-family:var(--f-display);color:var(--gold);font-size:.95rem;letter-spacing:.2em;transition:left 1.8s cubic-bezier(.6,0,.2,1), right 1.8s cubic-bezier(.6,0,.2,1)}
+.duo .lbl.a{left:calc(8% + 1px)}.duo .lbl.b{right:calc(8% + 2px)}
+.duo.meet .s.a{left:calc(50% - 18px)}.duo.meet .s.b{right:calc(50% - 18px)}
+.duo.meet .lbl.a{left:calc(50% - 17px)}.duo.meet .lbl.b{right:calc(50% - 16px)}
+.duo svg{position:absolute;left:50%;top:0;width:110px;margin-left:-55px;overflow:visible}
+.duo .heart{fill:none;stroke:var(--rose);stroke-width:1.4;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.6s ease 1.6s}
+.duo.meet .heart{stroke-dashoffset:0}
+@keyframes twin{50%{transform:scale(1.3)}}
+
+.scratch{position:relative;width:min(300px,100%);aspect-ratio:2/1;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.scratch .under{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:linear-gradient(180deg,var(--night-2),var(--night))}
+.scratch .under b{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,9vw,2.8rem);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.scratch .under span{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .8s ease}
+.scratch canvas.done{opacity:0;pointer-events:none}
+.linkish{background:none;border:0;color:var(--muted);font:inherit;font-size:.82rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
+.linkish:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+@media (max-width:560px){
+  .facts{grid-template-columns:1fr}
+  .moon{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .names span{animation:none;opacity:1;transform:none}
+  .constellation .path{animation:none;stroke-dashoffset:0}
+  .constellation .big{animation:none}
+  .envelope,.tap,.duo .s{animation:none}
+  .duo .s,.duo .lbl{transition-duration:.01s}
+}
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<div id="intro" role="dialog" aria-label="Your invitation envelope">
+  <button class="skip" id="skip" type="button">Skip</button>
+
+  <div class="env-wrap" id="envWrap">
+    <p class="env-to"><small>A letter for you</small>From Kareem &amp; Israa</p>
+    <button class="envelope" id="envelope" type="button" aria-label="Open the envelope">
+      <span class="env-back"></span>
+      <span class="env-letter"><b>You're invited</b><span>a little story</span></span>
+      <span class="env-front"></span>
+      <span class="env-flap"></span>
+      <span class="seal">K&amp;I</span>
+    </button>
+    <p class="tap">Tap the seal to open</p>
+  </div>
+
+  <div class="stage" id="stage" hidden>
+    <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <div class="duo" id="duo">
+      <svg viewBox="0 0 110 60" aria-hidden="true"><path class="heart" d="M55 56 C20 34 18 8 38 6 C48 5 54 12 55 18 C56 12 62 5 72 6 C92 8 90 34 55 56 Z"/></svg>
+      <span class="s a"></span><span class="s b"></span>
+      <span class="lbl a">K</span><span class="lbl b">I</span>
+    </div>
+
+    <div class="step" data-step="0">
+      <h3>Two stars, shining over the same city</h3>
+      <p>Each one bright on its own, somewhere in Cairo.</p>
+      <button class="next" type="button" data-go="1">Then what?</button>
+    </div>
+
+    <div class="step" data-step="1" hidden>
+      <h3>Until one night, their paths crossed</h3>
+      <p>And the sky has never looked the same since.</p>
+      <button class="next" type="button" data-go="2">And now?</button>
+    </div>
+
+    <div class="step" data-step="2" hidden>
+      <h3>Scratch the gold to find the night</h3>
+      <div class="scratch" id="scratch">
+        <div class="under"><b>12 · 12 · 2026</b><span>Saturday</span></div>
+        <canvas id="foil" aria-hidden="true"></canvas>
+      </div>
+      <button class="linkish" type="button" id="revealAll">Reveal it for me</button>
+      <button class="next" type="button" data-go="3" id="savedBtn" hidden>Saved the date ✦</button>
+    </div>
+
+    <div class="step" data-step="3" hidden>
+      <h3>Close your eyes and make a wish for them</h3>
+      <p>Then step inside. Your invitation is waiting.</p>
+      <button class="next" type="button" id="enter">Open the invitation</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="hero" aria-labelledby="names">
+    <span class="eyebrow">The stars aligned</span>
+
+    <svg class="constellation" viewBox="0 0 420 150" role="img" aria-label="A constellation joining two stars, K and I">
+      <defs>
+        <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="4" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <path class="faint" d="M30 110 L70 70 M350 70 L392 108 M150 40 L210 20 L270 40"/>
+      <path class="path" d="M60 92 L118 58 L162 76 L210 34 L258 76 L302 58 L360 92"/>
+      <circle class="star" cx="30" cy="110" r="1.6"/>
+      <circle class="star" cx="118" cy="58" r="2.2"/>
+      <circle class="star" cx="162" cy="76" r="1.8"/>
+      <circle class="star" cx="210" cy="34" r="3" style="fill:var(--rose)"/>
+      <circle class="star" cx="258" cy="76" r="1.8"/>
+      <circle class="star" cx="302" cy="58" r="2.2"/>
+      <circle class="star" cx="392" cy="108" r="1.6"/>
+      <circle class="star" cx="150" cy="40" r="1.2"/>
+      <circle class="star" cx="270" cy="40" r="1.2"/>
+      <circle class="big k" cx="60" cy="92" r="5"/>
+      <circle class="big e" cx="360" cy="92" r="5"/>
+      <text x="60" y="126" text-anchor="middle">K</text>
+      <text x="360" y="126" text-anchor="middle">I</text>
+    </svg>
+
+    <h1 class="names" id="names"><span>Kareem</span><span class="amp">&amp;</span><span>Israa</span></h1>
+    <p class="arabic" lang="ar" dir="rtl">كريم &amp; إسراء</p>
+    <p class="lede">are getting <em>engaged</em>, and we would love you there under the same sky.</p>
+    <button class="wish" id="wish" type="button">Make a wish</button>
+    <p class="hint">Tap anywhere in the sky to send them a shooting star</p>
+  </section>
+
+  <section class="chart" aria-labelledby="chart-title">
+    <div class="chart-head">
+      <h2 id="chart-title">The night</h2>
+      <span class="coords">Cairo · 30.04° N · 31.24° E</span>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Date</span>
+        <span class="v" id="f-date"></span>
+        <span class="sub" id="f-day"></span>
+      </div>
+      <div class="fact">
+        <span class="k">Time</span>
+        <span class="v" id="f-time"></span>
+        <span class="sub">Saturday evening</span>
+      </div>
+      <div class="fact">
+        <span class="k">Place</span>
+        <span class="v" id="f-venue"></span>
+        <span class="sub" id="f-area"></span>
+        <a class="maplink" id="maplink" href="#" target="_blank" rel="noopener" hidden>Open in Google Maps ↗</a>
+      </div>
+    </div>
+
+    <div class="countdown" id="countdown" hidden aria-live="polite">
+      <div><b id="cd-d">0</b><small>Days</small></div>
+      <div><b id="cd-h">0</b><small>Hours</small></div>
+      <div><b id="cd-m">0</b><small>Minutes</small></div>
+      <div><b id="cd-s">0</b><small>Seconds</small></div>
+    </div>
+
+    <div class="moon">
+      <canvas id="moon" width="128" height="128" aria-hidden="true"></canvas>
+      <p id="moon-text"></p>
+    </div>
+  </section>
+
+  <section class="chart guestbook" id="guestbook" aria-labelledby="gb-title" hidden>
+    <div class="chart-head">
+      <h2 id="gb-title">Messages from our people</h2>
+      <span class="coords" id="gbCount"></span>
+    </div>
+    <p class="lb-sub">Leave us a wish, a memory or a duaa. It stays here under our sky for everyone to read.</p>
+    <form class="lb-form" id="gbForm" autocomplete="off">
+      <label class="lb-label" for="gbName">Your name</label>
+      <input class="lb-input" id="gbName" name="gbName" maxlength="40" placeholder="e.g. Ahmed" required>
+      <label class="lb-label" for="gbMsg">Your message</label>
+      <textarea class="lb-input" id="gbMsg" name="gbMsg" rows="4" maxlength="600" placeholder="Mabrook! Wishing you both a lifetime of…" required></textarea>
+      <input class="hp" id="gbWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="wish lb-send" id="gbSend" type="submit">Leave your message ✦</button>
+      <p class="lb-note" id="gbStatus" aria-live="polite"></p>
+    </form>
+    <ol class="wall" id="wall"></ol>
+    <p class="wall-empty" id="wallEmpty">Be the first to leave a wish under our sky.</p>
+  </section>
+
+  <section class="chart letterbox" id="letterbox" aria-labelledby="lb-title" hidden>
+    <div class="chart-head">
+      <h2 id="lb-title">Write us a message</h2>
+      <span class="coords">Straight to us on WhatsApp</span>
+    </div>
+    <p class="lb-sub">A wish, a memory, a duaa. Whatever you write, we will keep it.</p>
+    <form class="lb-form" id="lbForm" autocomplete="off">
+      <label class="lb-label" for="lbName">Your name</label>
+      <input class="lb-input" id="lbName" name="lbName" maxlength="40" placeholder="e.g. Ahmed">
+      <label class="lb-label" for="lbMsg">Your message</label>
+      <textarea class="lb-input" id="lbMsg" name="lbMsg" rows="4" maxlength="600" placeholder="Mabrook! Wishing you both a lifetime of…"></textarea>
+      <a class="wish lb-send" id="lbSend" href="#" target="_blank" rel="noopener">Send our message ✦</a>
+      <p class="lb-note">Opens WhatsApp with your message ready. Just press send.</p>
+    </form>
+  </section>
+
+  <section class="closing">
+    <p class="ar" lang="ar" dir="rtl">وجعل بينكم مودة ورحمة</p>
+    <p>Your presence is the brightest star in our sky. Come celebrate the beginning of forever with us.</p>
+    <span class="sign">with love, Kareem &amp; Israa</span>
+    <a class="rsvp" id="rsvp" href="#" target="_blank" rel="noopener" hidden>RSVP on WhatsApp</a>
+  </section>
+</main>
+
+<script>
+/* ---- Edit the event details here ---- */
+const EVENT = {
+  date: "2026-12-12T00:00:00+02:00",
+  time: "18:00",       // Cairo time
+  venue: "El Patio Zahraa",
+  area: "Villa 141A",
+  map: "https://maps.app.goo.gl/4D6YPL69dmXd37rb6",
+  guestbook: "https://script.google.com/macros/s/AKfycbyJFynaYZQPuhHwLhj-9nd2TflM1iIn8NnBmGuoQ58PTdSvN4wPa2x-wKBtr5zYRZooZg/exec",     // Google Apps Script web app URL (ends in /exec); turns on the live guestbook
+  whatsapp: "201118900880", // fallback: number that receives guest messages when no guestbook is set, e.g. "201001234567" (country code, no +)
+  rsvpPhone: null      // e.g. "201001234567" (country code, no +)
+};
+
+(function details(){
+  const $ = id => document.getElementById(id);
+  const tbc = el => { el.textContent = "To be announced"; el.classList.add("tbc"); };
+  if (EVENT.date){
+    const d = new Date(EVENT.date);
+    $("f-date").textContent = d.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric",timeZone:"Africa/Cairo"});
+    $("f-day").textContent = d.toLocaleDateString("en-GB",{weekday:"long",timeZone:"Africa/Cairo"});
+    if (EVENT.time){
+      const [hh,mm] = EVENT.time.split(":").map(Number);
+      d.setTime(d.getTime() + (hh*60+mm)*60000);
+      $("f-time").textContent = d.toLocaleTimeString("en-GB",{hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Africa/Cairo"});
+    } else tbc($("f-time"));
+    const cd = $("countdown"); cd.hidden = false;
+    const tick = () => {
+      let s = Math.max(0, Math.floor((d - Date.now())/1000));
+      $("cd-d").textContent = Math.floor(s/86400); s%=86400;
+      $("cd-h").textContent = String(Math.floor(s/3600)).padStart(2,"0"); s%=3600;
+      $("cd-m").textContent = String(Math.floor(s/60)).padStart(2,"0");
+      $("cd-s").textContent = String(s%60).padStart(2,"0");
+    };
+    tick(); setInterval(tick,1000);
+  } else { tbc($("f-date")); $("f-day").textContent = "Save your evening"; tbc($("f-time")); }
+  if (EVENT.venue){ $("f-venue").textContent = EVENT.venue; $("f-area").textContent = EVENT.area || ""; }
+  if (EVENT.map){ $("maplink").href = EVENT.map; $("maplink").hidden = false; }
+  else { tbc($("f-venue")); $("f-area").textContent = "Cairo, Egypt"; }
+  if (EVENT.rsvpPhone){
+    const a = $("rsvp");
+    a.href = "https://wa.me/" + EVENT.rsvpPhone + "?text=" + encodeURIComponent("Congratulations Kareem & Israa! I'll be there ✨");
+    a.hidden = false;
+  }
+
+  function useWhatsApp(){
+    if (!EVENT.whatsapp) return;
+    $("letterbox").hidden = false;
+    const name = $("lbName"), msg = $("lbMsg"), send = $("lbSend");
+    const update = () => {
+      const m = msg.value.trim(), n = name.value.trim();
+      const text = `💌 A message for Kareem & Israa${n ? " from " + n : ""}:\n\n${m}`;
+      send.href = "https://wa.me/" + EVENT.whatsapp + "?text=" + encodeURIComponent(text);
+      send.setAttribute("aria-disabled", m ? "false" : "true");
+    };
+    name.addEventListener("input", update); msg.addEventListener("input", update); update();
+    $("lbForm").addEventListener("submit", e => e.preventDefault());
+  }
+
+  /* Live guestbook (works when hosted on your own domain with a Google Apps Script endpoint) */
+  if (EVENT.guestbook) startGuestbook(); else useWhatsApp();
+  function startGuestbook(){
+    const box = $("guestbook"), wall = $("wall"), form = $("gbForm"), status = $("gbStatus"), send = $("gbSend");
+    let loadedOnce = false;
+    try { const n = localStorage.getItem("ki-name"); if (n) $("gbName").value = n; } catch(_){}
+    const rtf = new Intl.RelativeTimeFormat("en", {numeric:"auto"});
+    const ago = t => {
+      const s = (t - Date.now())/1000, a = Math.abs(s);
+      if (a < 60) return "just now";
+      if (a < 3600) return rtf.format(Math.round(s/60),"minute");
+      if (a < 86400) return rtf.format(Math.round(s/3600),"hour");
+      return rtf.format(Math.round(s/86400),"day");
+    };
+    function render(list){
+      wall.textContent = "";
+      list.forEach(m => {
+        const li = document.createElement("li");
+        const st = document.createElement("span"); st.className = "st"; st.textContent = "✦"; st.setAttribute("aria-hidden","true");
+        const who = document.createElement("span"); who.className = "who"; who.textContent = m.n || "A friend";
+        const msg = document.createElement("p"); msg.className = "msg"; msg.textContent = m.m;
+        const t = document.createElement("span"); t.className = "ago"; t.textContent = ago(m.t);
+        li.append(st, who, msg, t); wall.appendChild(li);
+      });
+      $("wallEmpty").hidden = list.length > 0;
+      $("gbCount").textContent = list.length ? `${list.length} message${list.length > 1 ? "s" : ""}` : "";
+    }
+    async function load(){
+      try {
+        const r = await fetch(EVENT.guestbook, {cache:"no-store"});
+        const d = await r.json();
+        box.hidden = false; loadedOnce = true;
+        render(Array.isArray(d.messages) ? d.messages : []);
+      } catch(_){
+        if (!loadedOnce){ box.hidden = true; useWhatsApp(); }
+      }
+    }
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const name = $("gbName").value.trim(), message = $("gbMsg").value.trim();
+      if (!name || !message){ status.textContent = "Please add your name and a message."; return; }
+      send.disabled = true; status.textContent = "Sending your message…";
+      try {
+        const r = await fetch(EVENT.guestbook, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
+          body: JSON.stringify({name, message, website: $("gbWebsite").value})});
+        const d = await r.json();
+        if (!d.ok) throw new Error("rejected");
+        try { localStorage.setItem("ki-name", name); } catch(_){}
+        $("gbMsg").value = "";
+        status.textContent = "Thank you! Your message is now under our sky.";
+        const rect = send.getBoundingClientRect();
+        window.skyFx && window.skyFx.burst(rect.left + rect.width/2, rect.top + rect.height/2);
+        await load();
+      } catch(_){
+        status.textContent = "That didn't go through. Check your connection and try again.";
+      } finally { send.disabled = false; }
+    });
+    load(); setInterval(load, 30000);
+  }
+
+  /* Moon phase on the night (or tonight, until a date is set) */
+  const when = EVENT.date ? new Date(EVENT.date) : new Date();
+  const synodic = 29.530588853, ref = Date.UTC(2000,0,6,18,14);
+  const age = (((when - ref)/86400000) % synodic + synodic) % synodic;
+  const phase = age / synodic; // 0 new, .5 full
+  const illum = Math.round((1 - Math.cos(phase*2*Math.PI))/2*100);
+  const names = ["new moon","waxing crescent","first quarter","waxing gibbous","full moon","waning gibbous","last quarter","waning crescent"];
+  const name = names[Math.round(phase*8)%8];
+  $("moon-text").innerHTML = EVENT.date
+    ? `On the night, the moon over Cairo will be a <strong>${name}</strong>, ${illum}% lit.`
+    : `Tonight the moon over Cairo is a <strong>${name}</strong>, ${illum}% lit. The night of the engagement will be revealed soon.`;
+
+  const c = $("moon"), x = c.getContext("2d"), R = 52, cx = 64, cy = 64;
+  x.fillStyle = "#1d2350"; x.beginPath(); x.arc(cx,cy,R,0,Math.PI*2); x.fill();
+  x.save(); x.beginPath(); x.arc(cx,cy,R,0,Math.PI*2); x.clip();
+  x.fillStyle = "#f3e6c4"; x.shadowColor = "#e8c987"; x.shadowBlur = 18;
+  // lit region: half disc + ellipse terminator
+  const waxing = phase < .5, k = Math.cos(phase*2*Math.PI); // 1 new, -1 full
+  x.beginPath();
+  x.arc(cx,cy,R,-Math.PI/2,Math.PI/2, !waxing); // lit half
+  x.closePath(); x.fill();
+  x.shadowBlur = 0;
+  x.fillStyle = k > 0 ? "#1d2350" : "#f3e6c4"; // crescent carves, gibbous adds
+  x.beginPath(); x.ellipse(cx,cy,Math.abs(k)*R+.5,R+.5,0,0,Math.PI*2); x.fill();
+  x.restore();
+})();
+
+/* ---- Sky ---- */
+(function sky(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cv = document.getElementById("sky"), ctx = cv.getContext("2d");
+  let W, H, dpr, stars = [], shooters = [], sparks = [], px = 0, py = 0;
+  const palette = ["#ffffff","#eef0ff","#e8c987","#f6dfa4","#c9d2ff"];
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n = Math.round(W*H/2600);
+    stars = Array.from({length:n}, () => ({
+      x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.3+.2,
+      z:Math.random()*.8+.2, t:Math.random()*Math.PI*2, s:Math.random()*.02+.004,
+      c: Math.random()<.12 ? palette[2+Math.floor(Math.random()*3)] : "#ffffff"
+    }));
+  }
+  function shoot(x, y, big){
+    const a = Math.PI*(.15+Math.random()*.2), sp = (big?9:7)+Math.random()*4;
+    shooters.push({x: x ?? Math.random()*W*.8, y: y ?? Math.random()*H*.4, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp, life:1, len:big?180:120,
+      c: palette[Math.floor(Math.random()*palette.length)]});
+  }
+  function burst(x,y){
+    for (let i=0;i<46;i++){
+      const a = Math.random()*Math.PI*2, v = Math.random()*4+1.2;
+      sparks.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1.2,life:1,r:Math.random()*2+1,
+        c:palette[1+Math.floor(Math.random()*4)]});
+    }
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for (const s of stars){
+      s.t += s.s;
+      const a = .45 + Math.sin(s.t)*.4;
+      ctx.globalAlpha = Math.max(.05,a);
+      ctx.fillStyle = s.c;
+      ctx.beginPath(); ctx.arc(s.x + px*s.z, s.y + py*s.z, s.r, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    shooters = shooters.filter(m => m.life > 0);
+    for (const m of shooters){
+      m.x += m.vx; m.y += m.vy; m.life -= .012;
+      const g = ctx.createLinearGradient(m.x, m.y, m.x - m.vx/9*m.len/10, m.y - m.vy/9*m.len/10);
+      g.addColorStop(0, m.c); g.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.globalAlpha = Math.max(0,m.life);
+      ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(m.x,m.y); ctx.lineTo(m.x - m.vx*m.len/12, m.y - m.vy*m.len/12); ctx.stroke();
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(m.x,m.y,1.8,0,Math.PI*2); ctx.fill();
+    }
+    sparks = sparks.filter(p => p.life > 0);
+    for (const p of sparks){
+      p.x += p.vx; p.y += p.vy; p.vy += .05; p.vx *= .985; p.life -= .014;
+      ctx.globalAlpha = Math.max(0,p.life); ctx.fillStyle = p.c;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.life*6);
+      ctx.beginPath();
+      for (let i=0;i<4;i++){ ctx.lineTo(0,-p.r*2.4); ctx.rotate(Math.PI/4); ctx.lineTo(0,-p.r*.7); ctx.rotate(Math.PI/4); }
+      ctx.closePath(); ctx.fill(); ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+    if (!reduce && Math.random() < .004) shoot();
+    requestAnimationFrame(frame);
+  }
+  addEventListener("resize", resize);
+  addEventListener("pointermove", e => { px = (e.clientX/W - .5)*-14; py = (e.clientY/H - .5)*-14; });
+  addEventListener("pointerdown", e => {
+    if (e.target.closest("button, a, .scratch")) return;
+    shoot(e.clientX - 160, e.clientY - 90, true);
+  });
+  document.getElementById("wish").addEventListener("click", e => {
+    const r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2);
+    for (let i=0;i<7;i++) setTimeout(() => shoot(Math.random()*W*.7, Math.random()*H*.35, true), i*160);
+    e.currentTarget.textContent = "Wish sent ✦";
+    setTimeout(() => { e.currentTarget.textContent = "Make another wish"; }, 2600);
+  });
+  window.skyFx = { burst, shoot, size: () => [W,H] };
+  resize(); requestAnimationFrame(frame);
+})();
+
+/* ---- Intro: envelope, story, scratch card ---- */
+(function intro(){
+  const $ = id => document.getElementById(id);
+  const intro = $("intro"), env = $("envelope"), wrap = $("envWrap"), stage = $("stage"), duo = $("duo");
+  const steps = [...stage.querySelectorAll(".step")], dots = [...stage.querySelectorAll(".dots i")];
+  const fx = () => window.skyFx;
+  document.body.classList.add("intro");
+
+  function finish(){
+    intro.classList.add("leave");
+    document.body.classList.remove("intro");
+    setTimeout(() => { intro.hidden = true; }, 900);
+  }
+  $("skip").addEventListener("click", finish);
+
+  env.addEventListener("click", () => {
+    if (env.classList.contains("open")) return;
+    env.classList.add("open");
+    const r = env.getBoundingClientRect();
+    fx().burst(r.left + r.width/2, r.top + r.height*.58);
+    setTimeout(() => { wrap.classList.add("gone"); }, 1500);
+    setTimeout(() => { wrap.hidden = true; stage.hidden = false; show(0); }, 2000);
+  });
+
+  function show(n){
+    steps.forEach((s,i) => s.hidden = i !== n);
+    dots.forEach((d,i) => d.classList.toggle("on", i <= n));
+    duo.hidden = n > 1;
+    if (n === 1) requestAnimationFrame(() => duo.classList.add("meet"));
+    if (n === 2) initFoil();
+    const btn = steps[n].querySelector("button:not([hidden])");
+    if (btn) btn.focus({preventScroll:true});
+  }
+  stage.addEventListener("click", e => {
+    const b = e.target.closest("[data-go]"); if (!b) return;
+    const [W,H] = fx().size();
+    for (let i=0;i<3;i++) setTimeout(() => fx().shoot(Math.random()*W*.7, Math.random()*H*.3, true), i*140);
+    show(+b.dataset.go);
+  });
+
+  /* gold foil scratch card */
+  let foilReady = false, revealed = false;
+  function reveal(){
+    if (revealed) return; revealed = true;
+    $("foil").classList.add("done");
+    $("revealAll").hidden = true;
+    const r = $("scratch").getBoundingClientRect();
+    fx().burst(r.left + r.width/2, r.top + r.height/2);
+    const b = $("savedBtn"); b.hidden = false; b.focus({preventScroll:true});
+  }
+  $("revealAll").addEventListener("click", reveal);
+  function initFoil(){
+    if (foilReady) return; foilReady = true;
+    const cv = $("foil"), box = $("scratch").getBoundingClientRect(), dpr = Math.min(devicePixelRatio||1,2);
+    cv.width = box.width*dpr; cv.height = box.height*dpr;
+    const c = cv.getContext("2d"); c.scale(dpr,dpr);
+    const w = box.width, h = box.height;
+    const g = c.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,"#b98f45"); g.addColorStop(.35,"#f3dca0"); g.addColorStop(.55,"#c9a25a"); g.addColorStop(.8,"#f6e3ae"); g.addColorStop(1,"#a77d38");
+    c.fillStyle = g; c.fillRect(0,0,w,h);
+    for (let i=0;i<260;i++){ c.fillStyle = `rgba(255,255,255,${Math.random()*.35})`; c.fillRect(Math.random()*w, Math.random()*h, 1.2, 1.2); }
+    c.fillStyle = "rgba(60,40,15,.75)"; c.textAlign = "center"; c.textBaseline = "middle";
+    c.font = `500 ${Math.round(h*.11)}px Jost, sans-serif`;
+    c.fillText("S C R A T C H   H E R E  ✦", w/2, h/2);
+    c.globalCompositeOperation = "destination-out";
+    let down = false, last = null, moves = 0;
+    const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    const scratch = (x,y) => {
+      c.lineWidth = 38; c.lineCap = "round";
+      c.beginPath(); c.moveTo(...(last || [x,y])); c.lineTo(x,y); c.stroke();
+      last = [x,y];
+      if (++moves % 12 === 0) check();
+    };
+    function check(){
+      const d = c.getImageData(0,0,cv.width,cv.height).data; let clear = 0, n = 0;
+      for (let i=3;i<d.length;i+=4*40){ n++; if (d[i] === 0) clear++; }
+      if (clear/n > .5) reveal();
+    }
+    cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); scratch(...pos(e)); });
+    cv.addEventListener("pointermove", e => { if (down) scratch(...pos(e)); });
+    const up = () => { down = false; last = null; };
+    cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+  }
+
+  $("enter").addEventListener("click", e => {
+    const r = e.currentTarget.getBoundingClientRect(), [W,H] = fx().size();
+    fx().burst(r.left + r.width/2, r.top + r.height/2);
+    for (let i=0;i<8;i++) setTimeout(() => fx().shoot(Math.random()*W*.7, Math.random()*H*.35, true), i*130);
+    setTimeout(finish, 700);
+  });
+})();
+</script>
+
+</body>
+</html>
