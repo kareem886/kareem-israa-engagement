@@ -205,6 +205,14 @@ body.intro .constellation .big{animation-play-state:paused}
   background:radial-gradient(90% 70% at 50% 45%, rgba(20,26,58,.55), rgba(11,15,36,.92));
   transition:opacity .9s ease, filter .9s ease;
 }
+.musicbtn{
+  position:fixed;z-index:30;left:max(14px, env(safe-area-inset-left, 0px));bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  background:rgba(11,15,36,.6);border:1px solid var(--gold);color:var(--gold);
+  font:500 .7rem/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;padding:10px 14px;border-radius:999px;cursor:pointer;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.musicbtn:hover{background:rgba(232,201,135,.12)}
+.musicbtn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 #intro.leave{opacity:0;filter:blur(6px);pointer-events:none}
 .skip{
   position:absolute;top:calc(14px + env(safe-area-inset-top, 0px));right:max(16px, env(safe-area-inset-right, 0px));
@@ -330,6 +338,8 @@ body.intro .constellation .big{animation-play-state:paused}
 
 <canvas id="sky" aria-hidden="true"></canvas>
 
+<button class="musicbtn" id="musicBtn" type="button" aria-pressed="true" hidden>♪ Music on</button>
+
 <div id="intro" role="dialog" aria-label="Your invitation envelope">
   <button class="skip" id="skip" type="button">Skip</button>
 
@@ -342,7 +352,7 @@ body.intro .constellation .big{animation-play-state:paused}
       <span class="env-flap"></span>
       <span class="seal">K&amp;I</span>
     </button>
-    <p class="tap">Tap the seal to open</p>
+    <p class="tap">Tap the seal to open · turn your sound on ♪</p>
   </div>
 
   <div class="stage" id="stage" hidden>
@@ -724,6 +734,175 @@ const EVENT = {
   resize(); requestAnimationFrame(frame);
 })();
 
+/* ---- The qanun: an original melody in maqam Bayati (with its quarter tone) ---- */
+const Qanun = (function(){
+  let ctx, master, rev, on = true, drone = null;
+  const hz = m => 440*Math.pow(2,(m-69)/12);
+  function init(){
+    if (ctx){ if (ctx.state === "suspended") ctx.resume(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    ctx = new AC();
+    master = ctx.createGain(); master.gain.value = .5; master.connect(ctx.destination);
+    rev = ctx.createConvolver();
+    const len = ctx.sampleRate*3, ir = ctx.createBuffer(2,len,ctx.sampleRate);
+    for (let c=0;c<2;c++){ const d = ir.getChannelData(c); for (let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6); }
+    rev.buffer = ir; const wet = ctx.createGain(); wet.gain.value = .38; rev.connect(wet); wet.connect(master);
+  }
+  function out(){ const g = ctx.createGain(); g.connect(master); g.connect(rev); return g; }
+  function pluck(m, when=0, vel=.5){
+    if (!ctx || !on) return;
+    const t = ctx.currentTime + when, f = hz(m), o = out();
+    const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.Q.value = 1.2;
+    lp.frequency.setValueAtTime(f*9, t); lp.frequency.exponentialRampToValueAtTime(f*1.6, t+.6);
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(0,t); env.gain.linearRampToValueAtTime(vel*.35,t+.004); env.gain.exponentialRampToValueAtTime(.0001,t+1.6);
+    lp.connect(env); env.connect(o);
+    [0,4].forEach(cents => { // a qanun has paired strings, slightly apart
+      const s = ctx.createOscillator(); s.type = "sawtooth"; s.frequency.value = f; s.detune.value = cents;
+      s.connect(lp); s.start(t); s.stop(t+1.7);
+    });
+  }
+  function trem(m, when, dur, vel=.4){ // the qanun's rolled tremolo on long notes
+    for (let x=0; x<dur-.05; x+=.085) pluck(m, when+x, vel*(1 - x/dur*.6));
+  }
+  function drum(kind, when, vel=.5){
+    if (!ctx || !on) return;
+    const t = ctx.currentTime + when, o = out();
+    if (kind === "dum"){
+      const s = ctx.createOscillator(), e = ctx.createGain();
+      s.frequency.setValueAtTime(110,t); s.frequency.exponentialRampToValueAtTime(52,t+.25);
+      e.gain.setValueAtTime(vel*.7,t); e.gain.exponentialRampToValueAtTime(.0001,t+.45);
+      s.connect(e); e.connect(o); s.start(t); s.stop(t+.5);
+    } else {
+      const b = ctx.createBuffer(1, ctx.sampleRate*.12, ctx.sampleRate), d = b.getChannelData(0);
+      for (let i=0;i<d.length;i++) d[i] = (Math.random()*2-1)*Math.pow(1-i/d.length,4);
+      const src = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), e = ctx.createGain();
+      src.buffer = b; hp.type = "bandpass"; hp.frequency.value = 2400; hp.Q.value = .9; e.gain.value = vel*.5;
+      src.connect(hp); hp.connect(e); e.connect(o); src.start(t);
+    }
+  }
+  function startDrone(){
+    if (!ctx || drone) return;
+    const g = ctx.createGain(); g.gain.value = 0; g.connect(master);
+    const t = ctx.currentTime; g.gain.linearRampToValueAtTime(on ? .05 : 0, t+3);
+    const oscs = [38,45,50].map(m => { const s = ctx.createOscillator(); s.type = "sine"; s.frequency.value = hz(m); s.connect(g); s.start(); return s; });
+    drone = { g, oscs };
+  }
+  function setOn(v){ on = v; if (drone && ctx) drone.g.gain.linearRampToValueAtTime(v ? .05 : 0, ctx.currentTime + .4); }
+  return { init, pluck, trem, drum, startDrone, setOn, get on(){ return on; }, get ctx(){ return ctx; }, get bus(){ return {master, rev}; } };
+})();
+
+/* ---- The takht: strings, oud, qanun, riq and tabla, in the golden-age Cairo style ---- */
+const Takht = (function(){
+  const hz = m => 440*Math.pow(2,(m-69)/12);
+  function bus(){ const c = Qanun.ctx, b = Qanun.bus, g = c.createGain(); g.connect(b.master); g.connect(b.rev); return g; }
+  // violins in unison: scoop into the note, then a singing vibrato
+  function strings(m, when, dur, vel=.5){
+    const c = Qanun.ctx; if (!c || !Qanun.on) return;
+    const t = c.currentTime + when, f = hz(m), o = bus();
+    const lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600; lp.Q.value = .6;
+    const env = c.createGain();
+    env.gain.setValueAtTime(0,t); env.gain.linearRampToValueAtTime(vel*.11,t+Math.min(.14,dur*.3));
+    env.gain.setValueAtTime(vel*.11,t+Math.max(.15,dur-.12)); env.gain.linearRampToValueAtTime(0,t+dur+.18);
+    const lfo = c.createOscillator(), lg = c.createGain();
+    lfo.frequency.value = 5.4; lg.gain.setValueAtTime(0,t); lg.gain.linearRampToValueAtTime(f*.006,t+Math.min(.5,dur*.6));
+    lfo.connect(lg); lfo.start(t); lfo.stop(t+dur+.3);
+    [-8,0,7,12].forEach((cents,i) => {
+      const s = c.createOscillator(); s.type = "sawtooth";
+      s.frequency.setValueAtTime(f*Math.pow(2,-35/1200),t); s.frequency.exponentialRampToValueAtTime(f,t+.09);
+      s.detune.value = cents === 12 ? 1200 : cents;
+      lg.connect(s.frequency);
+      const sg = c.createGain(); sg.gain.value = cents === 12 ? .25 : 1;
+      s.connect(sg); sg.connect(lp); s.start(t); s.stop(t+dur+.3);
+    });
+    lp.connect(env); env.connect(o);
+  }
+  // oud: a warm, low pluck an octave down
+  function oud(m, when, vel=.5){
+    const c = Qanun.ctx; if (!c || !Qanun.on) return;
+    const t = c.currentTime + when, f = hz(m-12), o = bus();
+    const lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.setValueAtTime(f*6,t); lp.frequency.exponentialRampToValueAtTime(f*1.3,t+.4);
+    const env = c.createGain(); env.gain.setValueAtTime(0,t); env.gain.linearRampToValueAtTime(vel*.3,t+.006); env.gain.exponentialRampToValueAtTime(.0001,t+1.1);
+    ["triangle","sawtooth"].forEach((type,i) => { const s = c.createOscillator(); s.type = type; s.frequency.value = f; s.detune.value = i*5; s.connect(lp); s.start(t); s.stop(t+1.2); });
+    lp.connect(env); env.connect(o);
+  }
+  // riq jingles
+  function jingle(when, vel=.2){
+    const c = Qanun.ctx; if (!c || !Qanun.on) return;
+    const t = c.currentTime + when, o = bus();
+    const b = c.createBuffer(1, c.sampleRate*.18, c.sampleRate), d = b.getChannelData(0);
+    for (let i=0;i<d.length;i++) d[i] = (Math.random()*2-1)*Math.pow(1-i/d.length,3);
+    const src = c.createBufferSource(), hp = c.createBiquadFilter(), g = c.createGain();
+    src.buffer = b; hp.type = "highpass"; hp.frequency.value = 6500; g.gain.value = vel*.45;
+    src.connect(hp); hp.connect(g); g.connect(o); src.start(t);
+  }
+  return { strings, oud, jingle };
+})();
+
+/* Bayati on D: D  E-half-flat  F  G  A  Bb  C  D  (63.5 is the quarter tone) */
+const D=62, Eh=63.5, F=65, G=67, A=69, Bb=70, C=72, D5=74, Eh5=75.5;
+const STAR_MOTIFS = [[A],[G,A],[Bb,A],[G,F],[Eh,F,G],[A,Bb,C],[Bb,A,G],[F,Eh,D]];
+/* An original piece for Kareem & Israa. Sections: "intro" (strings swell over qanun, no drums),
+   "ens" (strings + oud in unison, drums), "ans" (the qanun answers alone over drums). */
+const PIECE = [
+  ["intro", [[D,2],[A,2],[G,1],[A,1],[Bb,2],[A,4]]],
+  ["ens",   [[A,.5],[Bb,.5],[C,1],[Bb,.5],[A,.5],[G,1],[A,2],[G,.5],[F,.5],[Eh,1],[F,2]]],
+  ["ans",   [[F,.5],[G,.5],[A,.5],[G,.5],[F,1],[Eh,1]]],
+  ["ens",   [[D,1],[F,1],[G,1],[A,1],[Bb,.5],[A,.5],[G,.5],[F,.5],[G,2]]],
+  ["ans",   [[A,.5],[G,.5],[F,.5],[Eh,.5],[D,2]]],
+  ["ens",   [[D5,2],[C,.5],[Bb,.5],[A,1],[Bb,1],[C,1],[D5,2],[Eh5,1],[D5,1],[C,1],[Bb,1],[A,4]]],
+  ["ans",   [[Bb,.5],[A,.5],[G,.5],[A,.5],[Bb,1],[A,1]]],
+  ["ens",   [[G,1],[F,1],[Eh,1],[F,.5],[G,.5],[F,1],[Eh,1],[D,4]]]
+];
+function playSong(){
+  Qanun.init(); Qanun.startDrone();
+  const beat = .5; let t = .15, drumFrom = null;
+  PIECE.forEach(([kind, notes]) => {
+    if (kind !== "intro" && drumFrom === null) drumFrom = t;
+    notes.forEach(([m,b]) => {
+      const dur = b*beat;
+      if (kind === "intro"){ Takht.strings(m, t, dur, .55); Qanun.trem(m-12, t, dur, .22); }
+      else if (kind === "ens"){
+        Takht.strings(m, t, dur, .5); Takht.oud(m, t, .5);
+        if (b >= 2) Qanun.trem(m, t, dur, .2);
+      } else { if (b >= 1) Qanun.trem(m, t, dur, .38); else Qanun.pluck(m, t, .55); }
+      t += dur;
+    });
+  });
+  // slow maqsum on tabla, riq shimmering on the off-beats
+  for (let k = drumFrom; k < t - .2; k += 4*beat){
+    Qanun.drum("dum", k, .55); Qanun.drum("tak", k + .5*beat, .3); Qanun.drum("tak", k + 1.5*beat, .35);
+    Qanun.drum("dum", k + 2*beat, .45); Qanun.drum("tak", k + 3*beat, .35);
+    for (let j=0;j<8;j++) Takht.jingle(k + j*beat/2, j%2 ? .14 : .22);
+  }
+  return t + 1.5;
+}
+
+
+/* ---- Background music: loops softly once the seal is broken ---- */
+const Music = (function(){
+  let playing = false, on = true, timer = null;
+  function loop(){
+    if (!playing || !on) return;
+    const dur = playSong();
+    timer = setTimeout(loop, (dur + 3) * 1000);
+  }
+  function start(){ Qanun.init(); if (playing) return; playing = true; loop(); paint(); }
+  function toggle(){
+    on = !on; Qanun.setOn(on);
+    const b = Qanun.bus; if (Qanun.ctx && b.master) b.master.gain.linearRampToValueAtTime(on ? .5 : 0, Qanun.ctx.currentTime + .4);
+    if (on && playing){ clearTimeout(timer); loop(); }
+    paint();
+  }
+  function paint(){
+    const btn = document.getElementById("musicBtn"); if (!btn) return;
+    btn.hidden = !playing;
+    btn.textContent = on ? "♪ Music on" : "♪ Music off";
+    btn.setAttribute("aria-pressed", on);
+  }
+  return { start, toggle };
+})();
+
 /* ---- Intro: envelope, story, scratch card ---- */
 (function intro(){
   const $ = id => document.getElementById(id);
@@ -737,11 +916,13 @@ const EVENT = {
     document.body.classList.remove("intro");
     setTimeout(() => { intro.hidden = true; }, 900);
   }
-  $("skip").addEventListener("click", finish);
+  $("skip").addEventListener("click", () => { Music.start(); finish(); });
+  $("musicBtn").addEventListener("click", Music.toggle);
 
   env.addEventListener("click", () => {
     if (env.classList.contains("open")) return;
     env.classList.add("open");
+    Music.start();
     const r = env.getBoundingClientRect();
     fx().burst(r.left + r.width/2, r.top + r.height*.58);
     setTimeout(() => { wrap.classList.add("gone"); }, 1500);
